@@ -1,5 +1,5 @@
 ![Sleep Health and Lifestyle Banner](data/banner_image.png)
-# Sleep Disorder Prediction Project
+# Sleep Disorder Prediction
 
 This project explores the prediction of sleep disorders using machine learning techniques. It includes data analysis, model training, building a prediction pipeline with custom transformers, and a CLI test script for interaction. In the future, we will deploy the model via an API.
 
