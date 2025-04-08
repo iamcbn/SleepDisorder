@@ -1,4 +1,4 @@
-![Sleep Health and Lifestyle Banner](banner_image.png)
+![Sleep Health and Lifestyle Banner](data/banner_image.png)
 # Sleep Disorder Prediction Project
 
 This project explores the prediction of sleep disorders using machine learning techniques. It includes data analysis, model training, building a prediction pipeline with custom transformers, and a CLI test script for interaction. In the future, we will deploy the model via an API.
@@ -20,7 +20,6 @@ This project explores the prediction of sleep disorders using machine learning t
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -100,7 +99,7 @@ SleepDisorder/
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/SleepDisorder.git
+   git clone https://github.com/iamcbn/SleepDisorder.git
    cd SleepDisorder
    ```
 
@@ -190,8 +189,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-
----
 
 ### Instructions to Use the README
 
