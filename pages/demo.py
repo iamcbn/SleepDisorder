@@ -50,14 +50,14 @@ def main():
 
     # --------- Data Imputation -------------
     st.text("Fill the form")
-    with st.expander("Basic Info", expanded= True, icon="ðŸ§"):
+    with st.expander("Basic Info", expanded= True, icon="🧍"):
         gender = st.selectbox("Gender", ["Male", "Female"])
         age = st.number_input("Age", 0, 120, 25)
         occupation = st.selectbox("Occupation", ['Software Engineer', 'Doctor', 'Sales Representative', 
                                              'Teacher', 'Nurse', 'Engineer', 'Accountant', 'Scientist', 
                                              'Lawyer', 'Salesperson', 'Manager', 'Others'], index= 0)
 
-    with st.expander("Physical Well-being", expanded= True, icon="ðŸƒðŸ½â€â™‚ï¸"):
+    with st.expander("Physical Well-being", expanded= True, icon="🏃🏽‍♂️"):
         sd = st.number_input("Sleep Duration", 0, 24,
                               value=7, help="How long do you sleep in a day?")
         qs = st.slider("Quality of Sleep", 1,10, value= 5,
@@ -175,34 +175,34 @@ def main():
                     warnings.simplefilter("ignore", category=FutureWarning)
                     trans_data = pipeline.transform(df)
             except Exception as e:
-                st.error(f"ðŸš¨ An error occurred: {e}")
+                st.error(f"🚨 An error occurred: {e}")
 
             pred = model.predict(trans_data)
             proba = model.predict_proba(trans_data).max()
             result = t_encoder.inverse_transform(pred)
 
-            st.success(f"ðŸ§  Sleep disorder prediction: **{result}** with **{proba:.2%}** confidence")
+            st.success(f"🧠 Sleep disorder prediction: **{result}** with **{proba:.2%}** confidence")
             st.session_state.predicted = True
 
     # Extra Information
     if st.session_state.predicted == True:
-        with st.expander("See Health Insights", expanded=True, icon= "ðŸ”"):
+        with st.expander("See Health Insights", expanded=True, icon= "🔍"):
             bmi_category = BMICategorizer().transform(df)
             bmi_value = bmi_category['BMI Category'].item()
             if bmi_value == "Obese":
-                st.markdown(f":red-badge[ðŸš¨**BMI Category**: {bmi_value}]", help= "Energency: Visit a doctor!!!")
+                st.markdown(f":red-badge[🚨**BMI Category**: {bmi_value}]", help= "Energency: Visit a doctor!!!")
             elif bmi_value ==  "Overweight":
-                st.markdown(f":orange-badge[âš ï¸**BMI Category**: {bmi_value}]", help= "Be at alert!: Check body fat ratio")
+                st.markdown(f":orange-badge[⚠️**BMI Category**: {bmi_value}]", help= "Be at alert!: Check body fat ratio")
             else:
                 st.badge(f"**BMI Category**: {bmi_value}", color= "green")
 
             bp_category = BPClassifier().transform(df)
             bp_value = bp_category.loc[0, 'BP Category']
             if bp_value in ['High BP (Stage 2)', 'High BP (Stage 1)', 'Low']:
-                st.markdown(f":red-badge[ðŸš¨**BP Category**: {bp_value}]", help= "Energency: Visit a doctor!!!")
+                st.markdown(f":red-badge[🚨**BP Category**: {bp_value}]", help= "Energency: Visit a doctor!!!")
 
             elif bp_value == 'Elevated':
-                st.markdown(f":orange-badge[âš ï¸**BP Category**: {bp_value}]", help= "Be at alert!: Something is wrong. Monitor yourself")
+                st.markdown(f":orange-badge[⚠️**BP Category**: {bp_value}]", help= "Be at alert!: Something is wrong. Monitor yourself")
             else:
                 st.badge(f"**BP Category**: {bp_value}", color= "green")
     

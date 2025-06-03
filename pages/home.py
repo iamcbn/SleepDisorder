@@ -14,7 +14,7 @@ with tab1:
 
                  Sleep disorders often go undiagnosed until they severely impact health 
                  and daily functioning. This project aims to provide a lightweight, early-screening
-                 tool powered by machine learning to help usersâ€”and especially healthcare professionalsâ€”identify 
+                 tool powered by machine learning to help users—and especially healthcare professionals—identify 
                  potential sleep-related risks based on basic health and lifestyle information.
                  """)
     with st.container():
@@ -22,10 +22,10 @@ with tab1:
                 ### How the App Works
                 This app is structured into four main pages:
 
-                - **ðŸ  Home**: Learn about the project, me, and how to get involved or collaborate.
-                - **ðŸ’» Demo**: Public-friendly version for quick predictions. Enter your health information and get a predicted sleep disorder status instantly.
-                - **ðŸ©º Clinical**: Designed for healthcare professionals. Includes a feedback form to help evaluate the tool's performance in real-world settings.
-                - **ðŸ“Š Model Evaluation**: Displays technical performance metrics like F1-macro, confusion matrix, classification report and SHAP for machine learning practitioners and clinical data analysts.
+                - **🏠 Home**: Learn about the project, me, and how to get involved or collaborate.
+                - **💻 Demo**: Public-friendly version for quick predictions. Enter your health information and get a predicted sleep disorder status instantly.
+                - **🩺 Clinical**: Designed for healthcare professionals. Includes a feedback form to help evaluate the tool's performance in real-world settings.
+                - **📊 Model Evaluation**: Displays technical performance metrics like F1-macro, confusion matrix, classification report and SHAP for machine learning practitioners and clinical data analysts.
 
                 Use the sidebar to navigate between pages.
                  """)
@@ -62,11 +62,11 @@ def show_contact_form():
 with tab2:
     with st.container():
         st.write("""
-                ### ðŸ‘‹ðŸ½ Hi! Iâ€™m **Bruno**
-                A data scientist passionate about using machine learning to improve healthcare outcomes. I believe that by bridging data and medicine, we can support clinicians, reduce their cognitive load, and ultimately help prevent medical errorsâ€”especially in resource-constrained settings.
+                ### 👋🏽 Hi! I’m **Bruno**
+                A data scientist passionate about using machine learning to improve healthcare outcomes. I believe that by bridging data and medicine, we can support clinicians, reduce their cognitive load, and ultimately help prevent medical errors—especially in resource-constrained settings.
                 \n
                  
-                 With **1+ year of hands-on experience**, Iâ€™ve worked on real-world projects that span the full data science lifecycleâ€”from data wrangling and analysis to building, evaluating, and deploying machine learning models. My recent focus has been on healthcare, particularly in developing solutions like this **sleep disorder screening app** to demonstrate how AI can assist in early detection and clinical decision support.
+                 With **1+ year of hands-on experience**, I’ve worked on real-world projects that span the full data science lifecycle—from data wrangling and analysis to building, evaluating, and deploying machine learning models. My recent focus has been on healthcare, particularly in developing solutions like this **sleep disorder screening app** to demonstrate how AI can assist in early detection and clinical decision support.
                 """)
     with st.container():
         st.write("""
@@ -81,17 +81,17 @@ with tab2:
                 """)
     with st.container():
         st.write("""
-                ### Letâ€™s Connect
+                ### Let’s Connect
 
                 Have a question, collaboration, or idea? 
                 Use the contact form below to send me a direct message.\n           
                 """)
         col1, col2, col3 = st.columns([1, 1, 1], vertical_alignment='center', gap= 'small')
         with col1:
-            st.link_button("ðŸ”— LinkedIn", "https://www.linkedin.com/in/bruno-nwagbo", use_container_width=True)
+            st.link_button("🔗 LinkedIn", "https://www.linkedin.com/in/bruno-nwagbo", use_container_width=True)
 
         with col2:
-            st.link_button("ðŸ’» GitHub", "https://github.com/iamcbn", use_container_width=True)
+            st.link_button("💻 GitHub", "https://github.com/iamcbn", use_container_width=True)
 
         with col3:
             if st.button("Contact Me",  use_container_width=True, icon= ":material/mail:"):

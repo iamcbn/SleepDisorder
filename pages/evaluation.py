@@ -73,7 +73,7 @@ def compute_auc_pr_summary():
         ax.plot(recall, precision, label=f'PR AUC = {pr_auc:.2f}')
         ax.set_xlabel("Recall")
         ax.set_ylabel("Precision")
-        ax.set_title(f"Precision-Recall Curve â€“ {cls}")
+        ax.set_title(f"Precision-Recall Curve – {cls}")
         ax.legend(loc='lower left')
         fig_dict[cls] = fig
 
@@ -91,14 +91,14 @@ def auc_pr():
         st.pyplot(pr_figures[cls])
 
 text = """
-This page offers a transparent overview of the modelling process behind the **Sleep Disorder Classifier**. It contains key insights into my thought process, model selection (SVC with `probability=True`), and hyperparameters used. Iâ€™ve also included evaluation metrics that reflect how the model performs across the three sleep disorder categories: **None**, **Sleep Apnea**, and **Insomnia**.
+This page offers a transparent overview of the modelling process behind the **Sleep Disorder Classifier**. It contains key insights into my thought process, model selection (SVC with `probability=True`), and hyperparameters used. I’ve also included evaluation metrics that reflect how the model performs across the three sleep disorder categories: **None**, **Sleep Apnea**, and **Insomnia**.
 
 To ensure a robust evaluation, I relied on a combination of:
 
-- **Confusion Matrix** â€“ for class-wise prediction breakdown
-- **Macro F1-Score** â€“ to summarise performance for each class independently
-- **ROC AUC (OvR)** and **AUC-PR** â€“ to evaluate probabilistic discrimination ability per class
-- **Log Loss** â€“ to quantify how confident the model was in its predictions
+- **Confusion Matrix** – for class-wise prediction breakdown
+- **Macro F1-Score** – to summarise performance for each class independently
+- **ROC AUC (OvR)** and **AUC-PR** – to evaluate probabilistic discrimination ability per class
+- **Log Loss** – to quantify how confident the model was in its predictions
 - **SHAP Summary** - to understand the roles of each feature to each class. Take it as your feature importance.
 
 These metrics were chosen to provide a complete picture of classification performance from both deterministic and probabilistic standpoints.
@@ -109,7 +109,7 @@ Additional context such as:
 - Data preprocessing techniques (e.g., scaling, encoding)
 - Model assumptions and limitations
 
-...are essential to fully grasp the modelâ€™s behaviour and should be reviewed alongside the evaluation.
+...are essential to fully grasp the model’s behaviour and should be reviewed alongside the evaluation.
 
 
 
@@ -118,7 +118,7 @@ Additional context such as:
 * `README.md` for a project overview
 * Model training notebook for end-to-end development details
 
-*Your feedback is encouraged â€“ this is an avenue for me to learn and grow.*
+*Your feedback is encouraged – this is an avenue for me to learn and grow.*
 """
 
 
@@ -137,7 +137,7 @@ with st.expander("F1 Scores"):
         st.metric("Test Macro F1Score", round(evaluation_metrics['f1_score'],3))
     with col2:
         st.metric("Train Macro F1-Score", round(train_metrics['f1_score'], 3))
-    st.caption(" *I understand the numbers look perfectâ€”I thought so too. However, if you compare the test results with the training results, you'll notice that the training F1 score is lower than the test score. What do you make of this? Please leave your feedback via the `Contact Me` form.*")
+    st.caption(" *I understand the numbers look perfect—I thought so too. However, if you compare the test results with the training results, you'll notice that the training F1 score is lower than the test score. What do you make of this? Please leave your feedback via the `Contact Me` form.*")
 
 # Show Classification Report
 with st.expander("Classification Report"):

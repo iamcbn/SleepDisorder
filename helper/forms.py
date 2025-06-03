@@ -6,8 +6,6 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
-
-
 # ------- Connecting to Google Sheet ----------
 conn = st.connection("gsheets", type=GSheetsConnection)
 
@@ -87,7 +85,7 @@ def contact_form():
                 st.session_state.message = message_data
                 update_or_create_sheet("Contact Form", message_data)
 
-                st.success("Thanks for reaching out! Iâ€™ll get back to you soon.")
+                st.success("Thanks for reaching out! I’ll get back to you soon.")
                 
         
 
@@ -98,7 +96,7 @@ def doctor_form():
         specialization = st.text_input("Area of Specialization")
         message = st.text_area("Your Feedback: Any symptoms or observations the model missed?")
         suggestions = st.text_area("Suggestions to improve the model (optional)")
-        follow_up = st.checkbox("Iâ€™m open to being contacted for follow-up questions")
+        follow_up = st.checkbox("I’m open to being contacted for follow-up questions")
         submitted = st.form_submit_button("Send")
 
         if submitted:

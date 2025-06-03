@@ -198,7 +198,7 @@ def main():
             st.session_state.predicted_value = result
             st.session_state.probability = f"{proba:.2%}"
 
-            st.success(f"ðŸ§  Sleep disorder prediction: **{result}** with **{proba:.2%}** confidence")
+            st.success(f"🧠 Sleep disorder prediction: **{result}** with **{proba:.2%}** confidence")
             st.session_state.predicted = True
 
  
@@ -223,7 +223,7 @@ def main():
             data_to_save["Confidence"] = st.session_state.probability
             data_to_save["Prediction_Correct"] = feedback_correct
             data_to_save["Correct_Diagnosis"] = correct_diagnosis if correct_diagnosis else st.session_state.predicted_value
-            update_or_create_sheet("Sleep Data", data_to_save.to_dict())
+            update_or_create_sheet("Sleep Data", data_to_save)
 
 
         
@@ -265,7 +265,7 @@ if not st.session_state["logged_in"]:
         if button:
             if success:
                 st.session_state["logged_in"] = True
-                st.toast(f"Welcome Dr. {dr_name}!", icon="ðŸ’š")
+                st.toast(f"Welcome Dr. {dr_name}!", icon="💚")
                 st.rerun()
 
             else:
