@@ -66,7 +66,7 @@ This project predicts the likelihood of a sleep disorder by processing user data
 
 ```
 SleepDisorder/
-├── app/
+├── others/
 │   ├── __init__.py               # (Optional) Package marker for app directory
 │   ├── test.py                   # CLI test script to interact with the model
 │   ├── utils.py                  # Contains UserDataCollector for data input
@@ -134,7 +134,7 @@ The test script located at `app/test.py` interacts with your model. It collects 
 1. **Navigate to the `app` Directory:**
 
    ```bash
-   cd app
+   cd others
    ```
 
 2. **Run the Test Script:**

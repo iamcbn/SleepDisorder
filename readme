@@ -1,0 +1,209 @@
+![Sleep Health and Lifestyle Banner](data/banner_image.png)
+
+# Sleep Disorder Prediction
+
+This project leverages machine learning to predict the likelihood of sleep disorders based on health and lifestyle metrics. It includes exploratory data analysis (EDA), feature engineering, model training, a robust prediction pipeline, a CLI script, and a user-friendly web app built with Streamlit.
+
+---
+
+## Table of Contents
+
+* [Overview](#overview)
+* [Project Workflow](#project-workflow)
+
+  * [Data Analysis](#data-analysis)
+  * [Model Training](#model-training)
+  * [Prediction Pipeline](#prediction-pipeline)
+  * [Web App Interface](#web-app-interface)
+* [Project Structure](#project-structure)
+* [Installation and Setup](#installation-and-setup)
+* [Running the Project](#running-the-project)
+
+  * [Streamlit App](#streamlit-app)
+  * [CLI Test Script](#cli-test-script)
+* [Deployment](#deployment)
+* [Troubleshooting](#troubleshooting)
+* [Contributing](#contributing)
+* [License](#license)
+
+---
+
+## Overview
+
+The goal of this project is to assess whether a user is likely to suffer from a sleep disorder using various lifestyle and health indicators (e.g., age, gender, BMI, stress level, physical activity, blood pressure). The app allows non-technical users to interact via an intuitive UI while also offering a technical page with evaluation metrics.
+
+Key components include:
+
+* **Custom Transformers** for BMI and BP classification
+* **Data Pipeline** built with scikit-learn
+* **Model Evaluation Page** for precision, recall, F1, confusion matrix, and classification report
+* **Streamlit UI** with light/dark theme toggle, expanders, and sidebars
+
+---
+
+## Project Workflow
+
+### Data Analysis
+
+* Conducted EDA to understand patterns between sleep quality and other features
+* Cleaned and transformed raw data, e.g., converted height from cm to meters
+* Explored correlation between lifestyle habits and disorder presence
+
+### Model Training
+
+* Trained multiple models (Logistic Regression, Random Forest, etc.)
+* Applied SMOTE to handle class imbalance
+* Used custom transformers (BMI categoriser, BP classifier)
+* Chose best model based on F2, precision, recall; optimised for reducing false positives
+
+### Prediction Pipeline
+
+* Built a modular `Pipeline` using scikit-learn
+* Included preprocessing (categorical encoding, scaling, feature engineering)
+* Saved model and components as `.pkl` files in the `models/` directory
+
+### Web App Interface
+
+* Built with Streamlit to allow user-friendly interaction
+* Home page for predictions with minimal inputs
+* Technical page shows model performance and metrics post-prediction
+* Theme toggle via sidebar; metrics displayed only after prediction to avoid confusion
+
+---
+
+## Project Structure
+
+```
+SleepDisorder/
+├── .streamlit/
+│   └── config.toml                # Light/dark theme settings
+├── others/
+│   ├── test.py                   # CLI test script
+│   ├── utils.py                  # UserDataCollector class
+├── pages/
+│   └── Technical.py              # Streamlit technical metrics page
+├── data/
+│   ├── banner_image.png          # Web app banner image
+│   ├── data.csv                  # Dataset
+│   └── notebooks.ipynb           # EDA notebook
+├── models/
+│   ├── model.pkl                 # Trained model
+│   ├── feature_encoder.pkl
+│   ├── target_encoder.pkl
+│   └── scaler.pkl
+├── transformers/
+│   ├── bmi_categorizer.py
+│   ├── bp_classifier.py
+│   ├── saved_encoder.py
+│   ├── saved_scaler.py
+│   └── feature_correcter.py
+├── app.py                        # Streamlit main script
+├── config.py                     # Project configuration
+├── requirements.txt              # Project dependencies
+├── .gitignore                    # Files to exclude from version control
+└── README.md                     # Project documentation
+```
+
+---
+
+## Installation and Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/iamcbn/SleepDisorder.git
+   cd SleepDisorder
+   ```
+
+2. **Set up a virtual environment**
+
+   **Windows:**
+
+   ```bash
+   python -m venv .venv
+   .venv\Scripts\activate
+   ```
+
+   **macOS/Linux:**
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Running the Project
+
+### Streamlit App
+
+1. **Run the app locally:**
+
+   ```bash
+   streamlit run app.py
+   ```
+2. **App includes:**
+
+   * Sidebar with About section, contact links, and theme toggle
+   * Prediction page for sleep disorder detection
+   * Technical page for precision, recall, F1, confusion matrix, classification report
+
+### CLI Test Script
+
+1. Navigate to `others/`
+
+   ```bash
+   cd others
+   ```
+2. Run the script
+
+   ```bash
+   python test.py
+   ```
+
+---
+
+## Deployment
+
+This app is deployed using **Streamlit Community Cloud**:
+
+1. **Push your code to GitHub**
+2. **Sign in to [Streamlit Cloud](https://share.streamlit.io)**
+3. **Deploy your repo:** Choose `app.py` as the entry point
+
+Make sure your repo contains:
+
+* `app.py`
+* `requirements.txt`
+* `models/` with `.pkl` files
+* `.streamlit/config.toml` (for theme)
+
+---
+
+## Troubleshooting
+
+* **App crashes on prediction:** Ensure all `.pkl` files are in place and paths are correct.
+* **Missing packages:** Run `pip install -r requirements.txt` again.
+* **Git errors:** Ensure `.gitignore` doesn’t exclude essential files (like models).
+
+---
+
+## Contributing
+
+Contributions are welcome! Fork the repo, create a feature branch, and submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Made with ❤️ by [@iamcbn](https://github.com/iamcbn)

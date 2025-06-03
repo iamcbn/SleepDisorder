@@ -42,7 +42,7 @@ def main():
 
     pred = model.predict(trans_data)
     result = t_encoder.inverse_transform(pred)[0]
-    print("🧠 Sleep disorder prediction: ", result)
+    print("ðŸ§  Sleep disorder prediction: ", result)
 
 
 if __name__ == "__main__":

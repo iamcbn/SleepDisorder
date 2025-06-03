@@ -22,17 +22,17 @@ class BMICategorizer(BaseEstimator, TransformerMixin):
                 bmi = row['BMI']
                 gender = str(row['Gender']).lower() if isinstance(row['Gender'], str) else None
                 if gender == 'male':
-                    if bmi < 25: 
+                    if bmi <= 25: 
                         return 'Normal Weight'
-                    elif bmi < 30: 
+                    elif bmi <= 30: 
                         return 'Overweight'
                     else: 
                         return 'Obese'
                     
                 elif gender == 'female':
-                    if bmi < 24: 
+                    if bmi <= 24: 
                         return 'Normal Weight'
-                    elif bmi < 39: 
+                    elif bmi <= 39: 
                         return 'Overweight'
                     else: 
                         return 'Obese'

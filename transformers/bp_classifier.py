@@ -41,7 +41,7 @@ class BPClassifier(BaseEstimator, TransformerMixin):
             return 'Unknown'  # If values are invalid
         elif systolic < 90 or diastolic < 60:
             return 'Low'
-        elif 90 <= systolic < 120 and 60 <= diastolic < 80:
+        elif 90 <= systolic <= 120 and 60 <= diastolic <= 80:
             return 'Normal'
         elif 120 <= systolic < 130 and diastolic < 80:
             return 'Elevated'

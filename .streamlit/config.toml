@@ -1,0 +1,7 @@
+[theme]
+base="dark"
+secondaryBackgroundColor="#080c2d"
+baseRadius="full"
+
+[server]
+runOnSave = true
