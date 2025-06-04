@@ -1,8 +1,15 @@
 import streamlit as st
 import sys, os
 from helper.forms import contact_form
+import sys, os
 
-st.image(r"data\banner_image.png")
+# Setting directory to be parent root directory
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from config import BANNER_IMAGE
+
+st.image(BANNER_IMAGE, use_column_width=True)
+# --- Define Pages ---
 tab1, tab2 = st.tabs(["About the Project", "About Me"])
 
 # ------- ABOUT THE PROJECT TAB ----------

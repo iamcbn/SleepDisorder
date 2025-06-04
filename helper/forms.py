@@ -21,7 +21,7 @@ def update_or_create_sheet(worksheet_name: str, new_data: dict):
     - If it does, append a new row.
     """
     if isinstance(new_data, dict):
-        new_df = pd.DataFrame(new_data)
+        new_df = pd.DataFrame([new_data])
     else:
         new_df = new_data.copy()
 

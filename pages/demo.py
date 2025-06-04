@@ -34,7 +34,7 @@ def main():
 
 
     # Streamlit App Header
-    st.image(r"data\banner_image.png")
+    st.image(BANNER_IMAGE, use_column_width=True)
     st.title("Sleep Disorder Prediction")
     st.caption("This is the demo page. Fill free to interact with the model. Your feedback will be appreciated")
     
