@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from config import BANNER_IMAGE
 
-st.image(BANNER_IMAGE, use_column_width=True)
+st.image(BANNER_IMAGE, use_container_width=True)
 # --- Define Pages ---
 tab1, tab2 = st.tabs(["About the Project", "About Me"])
 
