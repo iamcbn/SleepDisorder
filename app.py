@@ -16,7 +16,7 @@ pages = {
 navigation = st.navigation(pages)
 
 # --- App Add-ins ---
-st.logo(r"data\logo.png", size= "large")
+st.logo("data/logo.png", size= "large")
 st.sidebar.text("Made with ❤ by Bruno")
 st.sidebar.markdown("[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bruno-nwagbo)")
 st.sidebar.markdown("[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/iamcbn)")
