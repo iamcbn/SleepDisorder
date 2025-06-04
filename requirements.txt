@@ -8,4 +8,4 @@ IPython==8.12.3
 scipy==1.15.2
 statsmodels==0.14.4
 shap==0.47.1
-streamlit_gsheets
+st-gsheets-connection==0.1.0
