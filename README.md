@@ -229,7 +229,7 @@ The Streamlit app is hosted on **Streamlit Community Cloud**:
    - `app.py`
    - `requirements.txt`
 
-🔗 **Live App**: [sleepdisorder-bruno.streamlit.app](https://sleepdisorder-iamcbn.streamlit.app)
+🔗 **Live App**: [sleepdisorder-iamcbn.streamlit.app](https://sleepdisorder-iamcbn.streamlit.app)
 
 ---
 
