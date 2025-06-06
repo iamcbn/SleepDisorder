@@ -1,10 +1,12 @@
 ![Sleep Health and Lifestyle Banner](data/banner_image.png)
 
-[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-ff4b4b?logo=streamlit\&logoColor=red)](https://sleepdisorder-bruno.streamlit.app)
+[![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/github/license/iamcbn/SleepDisorder)](LICENSE)
-[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-ff4b4b?logo=streamlit\&logoColor=white)](https://sleepdisorder-bruno.streamlit.app)
-[![Platform](https://img.shields.io/badge/Platform-Streamlit-lightgrey?logo=streamlit)](https://streamlit.io/)
+<!-- [![Platform](https://img.shields.io/badge/Platform-Streamlit-lightgrey?logo=streamlit)](https://streamlit.io/) -->
 
+
+  
 # Sleep Disorder Prediction
 
 This project explores the prediction of sleep disorders using machine learning techniques. It now includes a multi-page Streamlit web application with dedicated sections for general users (Demo), healthcare professionals (Clinician Portal), and technical audiences (Model Evaluation). Additionally, it still supports command-line interaction via a CLI test script.
@@ -78,21 +80,11 @@ This project predicts the likelihood of a sleep disorder—**Sleep Apnoea**, **I
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Home**             | Introduction to the project, developer “About Me” section, and a contact form for general enquiries or feedback.                            |
 | **Demo**             | User-friendly interface allowing non-technical users to enter health metrics and receive a sleep disorder prediction with confidence score. |
-| **Clinician Portal** | Secure area for healthcare professionals only to:
-- Input the same health metrics as on Demo.
-- View model prediction and confidence.
-- Confirm if the prediction is correct or indicate the correct diagnosis.
-- Provide optional qualitative feedback. |
-| **Model Evaluation** | Technical dashboard showing:
-
-- Macro F1 scores for train/test sets
-- Classification report
-- Confusion matrix
-- Precision-Recall AUC curves per class
-- Log Loss metric
-- SHAP values summary plot |
+| **Clinician Portal** | Secure area for healthcare professionals only to:<ul><li> Input the same health metrics as on Demo.</li><li> View model prediction and confidence.</li><li> Confirm if the prediction is correct or indicate the correct diagnosis.</li><li> Provide optional qualitative feedback. |
+| **Model Evaluation** | Technical dashboard showing:<ul><li> Macro F1 scores for train/test sets</li><li> Classification report</li><li> Confusion matrix</li><li> Precision-Recall AUC curves per class</li><li> Log Loss metric</li><li> SHAP values summary plot |
 
 ---
+  
 
 ## Project Structure
 
