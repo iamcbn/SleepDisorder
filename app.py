@@ -11,7 +11,7 @@ from config import LOGO_IMAGE
 home_page = st.Page("pages/home.py", title="Home")
 demo_page = st.Page("pages/demo.py", title="Demo")
 eval_page = st.Page("pages/evaluation.py", title="Model Evaluation")
-doctors_page = st.Page("pages/doctors.py", title="Clinical Corner")
+doctors_page = st.Page("pages/doctors.py", title="Clinician Portal")
 
 # --- Setup Navigation With Sections---
 pages = {

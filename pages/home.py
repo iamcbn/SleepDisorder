@@ -31,7 +31,7 @@ with tab1:
 
                 - **`Home`**: Learn about the project, me, and how to get involved or collaborate.
                 - **`Demo`**: Public-friendly version for quick predictions. Enter your health information and get a predicted sleep disorder status instantly.
-                - **`Clinical Corner`**: Designed for healthcare professionals. Includes a feedback form to help evaluate the tool's performance in real-world settings.
+                - **`Clinician Portal`**: Designed for healthcare professionals. Includes a feedback form to help evaluate the tool's performance in real-world settings.
                 - **`Model Evaluation`**: Displays technical performance metrics like F1-macro, confusion matrix, classification report and SHAP for machine learning practitioners and clinical data analysts.
 
                 Use the sidebar to navigate between pages.

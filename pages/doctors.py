@@ -70,11 +70,11 @@ def main():
     with st.expander("Physical Well-being", expanded= True, icon=":material/exercise:"):
         sd = st.number_input("Sleep Duration", 0, 24,value=None, placeholder= "Enter a value",
                               help="How long do you sleep in a day?")
-        qs = st.slider("Quality of Sleep", 1,10, value=None,
+        qs = st.slider("Quality of Sleep", 1,10, value=1,
                         step=1, help="On a scale of 1-10 rate your sleep quality")
-        pal = st.slider("Physical Activity Level", 1,10, step=1,value=None,
+        pal = st.slider("Physical Activity Level", 1,10, step=1,value=1,
                         help="On a scale of 1-10, how active are you?")
-        sl = st.slider("Stress Level", 1,10, step=1, value=None,
+        sl = st.slider("Stress Level", 1,10, step=1, value=1,
                        help="On a scale of 1-10 how stressed have you been?")
         ds = st.number_input("Daily Steps", min_value= 0, step=1, placeholder= "Enter a value", value=None)
 

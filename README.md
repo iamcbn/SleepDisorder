@@ -1,64 +1,96 @@
 ![Sleep Health and Lifestyle Banner](data/banner_image.png)
+
+[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/github/license/iamcbn/SleepDisorder)](LICENSE)
+[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-ff4b4b?logo=streamlit\&logoColor=white)](https://sleepdisorder-bruno.streamlit.app)
+[![Platform](https://img.shields.io/badge/Platform-Streamlit-lightgrey?logo=streamlit)](https://streamlit.io/)
+
 # Sleep Disorder Prediction
 
-This project explores the prediction of sleep disorders using machine learning techniques. It includes data analysis, model training, building a prediction pipeline with custom transformers, and a CLI test script for interaction. In the future, we will deploy the model via an API.
+This project explores the prediction of sleep disorders using machine learning techniques. It now includes a multi-page Streamlit web application with dedicated sections for general users (Demo), healthcare professionals (Clinician Portal), and technical audiences (Model Evaluation). Additionally, it still supports command-line interaction via a CLI test script.
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Project Workflow](#project-workflow)
-  - [Data Analysis](#data-analysis)
-  - [Model Training](#model-training)
-  - [Prediction Pipeline](#prediction-pipeline)
-- [Project Structure](#project-structure)
-- [Installation and Setup](#installation-and-setup)
-- [Running the Project](#running-the-project)
-  - [Running the CLI Test Script](#running-the-cli-test-script)
-- [Next Steps: Deploying via API](#next-steps-deploying-via-api)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+* [Overview](#overview)
+* [Key Features](#key-features)
+* [App Walkthrough](#app-walkthrough)
+* [Project Structure](#project-structure)
+* [Installation and Setup](#installation-and-setup)
+* [Running the Project](#running-the-project)
+
+  * [Streamlit App](#streamlit-app)
+  * [CLI Test Script](#cli-test-script)
+* [Deployment](#deployment)
+* [Troubleshooting](#troubleshooting)
+* [Contributing](#contributing)
+* [License](#license)
 
 ---
 
 ## Overview
 
-This project predicts the likelihood of a sleep disorder by processing user data (such as gender, age, BMI, sleep quality, stress level, etc.) using a machine learning model. The workflow consists of:
+This project predicts the likelihood of a sleep disorder—**Sleep Apnoea**, **Insomnia**, or **None**—by processing user data (such as gender, age, BMI, sleep quality, stress level, etc.) through a trained machine learning model.
+
+**Core components include:**
 
 1. **Data Analysis:** Exploratory data analysis (EDA) via Jupyter notebooks.
-2. **Model Training:** Training machine learning models with robust feature engineering and validation.
-3. **Prediction Pipeline:** Integrating custom transformers (e.g., BMI categorizer, blood pressure classifier, encoders, scalers) with a trained model.
-4. **CLI Testing:** Interacting with the pipeline through a CLI test script (`app/test.py`).
-5. **Next Steps:** Planning to deploy the model via an API using FastAPI and optionally a frontend via Streamlit.
+2. **Model Training:** Training machine learning models with feature engineering and validation.
+3. **Prediction Pipeline:** Integrating custom transformers (e.g. BMI categoriser, BP classifier, encoders, scalers) with a trained model.
+4. **CLI Interaction:** A command-line test script (`helper/test.py`) for quick terminal-based predictions.
+5. **Web App Interface:** A multi-page Streamlit app comprising Home, Demo, Clinician Portal, and Model Evaluation pages.
 
 ---
 
-## Project Workflow
+## Key Features
 
-### Data Analysis
+* **Custom Transformers:**
 
-- **Exploratory Data Analysis (EDA):**  
-  Jupyter notebooks in `data/notebook.ipynb` were used to visualize and understand the relationships between variables such as sleep duration, BMI, and stress levels.
-- **Data Cleaning and Feature Engineering:**  
-  Data inconsistencies, such as unit mismatches (e.g., converting height from centimeters to meters), were corrected and additional features were derived to enhance model performance.
+  * **BMICategoriser** — categorises BMI into standard risk groups.
+  * **BPClassifier** — classifies blood pressure into clinical categories.
 
-### Model Training
+* **Robust Pipeline:**
 
-- **Model Selection and Training:**  
-  Several models were trained and evaluated to predict sleep disorders. Hyperparameter tuning and cross-validation ensured robust performance.
-- **Custom Transformers:**  
-  Custom transformers, like `BMICategorizer` and `BPClassifier`, were built to preprocess the data according to domain-specific criteria.
-- **Persisting the Model:**  
-  The best-performing model, along with pre-fitted encoders/scalers, was serialized using `pickle` and saved in the `models/` directory.
+  * Encodes categorical variables, scales numerical features, and applies custom transformers.
+  * Uses a Support Vector Classifier (SVC) with probability calibration to output prediction confidences.
 
-### Prediction Pipeline
+* **Streamlit Web Application:**
 
-- **Pipeline Assembly:**  
-  A prediction pipeline was built using scikit-learn’s `Pipeline` class. It includes the custom transformers and the trained model.
-- **CLI Interaction:**  
-  The pipeline was tested using a CLI test script (`app/test.py`). This script uses the `UserDataCollector` class (from `app/utils.py`) to gather user input, transform it, and output a prediction.
+  * **Home Page** — overview of the project and contact form.
+  * **Demo Page** — public-friendly prediction interface.
+  * **Clinician Portal** — doctors verify model predictions, provide corrected diagnoses, and submit feedback.
+  * **Model Evaluation Page** — detailed performance metrics, including confusion matrix, classification report, ROC-AUC/PR-AUC plots, log loss, and SHAP summary.
+
+* **Data Collection Loop:**
+
+  * Clinicians can confirm or correct model predictions, and that feedback is appended to a Google Sheet for model improvement.
+
+* **Command-Line Test Script:**
+
+  * Quickly test predictions in the terminal using `helper/test.py`.
+
+---
+
+## App Walkthrough
+
+| Page                 | Description                                                                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Home**             | Introduction to the project, developer “About Me” section, and a contact form for general enquiries or feedback.                            |
+| **Demo**             | User-friendly interface allowing non-technical users to enter health metrics and receive a sleep disorder prediction with confidence score. |
+| **Clinician Portal** | Secure area for healthcare professionals only to:
+- Input the same health metrics as on Demo.
+- View model prediction and confidence.
+- Confirm if the prediction is correct or indicate the correct diagnosis.
+- Provide optional qualitative feedback. |
+| **Model Evaluation** | Technical dashboard showing:
+
+- Macro F1 scores for train/test sets
+- Classification report
+- Confusion matrix
+- Precision-Recall AUC curves per class
+- Log Loss metric
+- SHAP values summary plot |
 
 ---
 
@@ -66,132 +98,200 @@ This project predicts the likelihood of a sleep disorder by processing user data
 
 ```
 SleepDisorder/
-├── others/
-│   ├── __init__.py               # (Optional) Package marker for app directory
-│   ├── test.py                   # CLI test script to interact with the model
-│   ├── utils.py                  # Contains UserDataCollector for data input
+├── .streamlit/
+│   └── config.toml                # Theme settings (light/dark)
+├── helper/
+│   ├── forms.py                   # Streamlit form for clinician feedback + Google Sheets integration
+│   ├── test.py                    # CLI test script for terminal predictions
+│   └── utils.py                   # UserDataCollector: input validation and conversion
+├── pages/
+│   ├── home.py                    # Home page: project overview, About Me, contact form
+│   ├── demo.py                    # Demo page: public prediction interface
+│   ├── doctors.py                 # Clinician Portal page: prediction confirmation and feedback
+│   └── evaluation.py              # Model Evaluation page: performance metrics and visualisations
 ├── data/
-│   ├── banner_image.png          # Image
-│   ├── data.csv                  # Primary dataset
-│   └── notebooks.ipynb           # Jupyter notebooks for EDA and model training
-├── models/                       # Trained models and serialized objects
-│   ├── model.pkl                 # Trained prediction model
-│   ├── feature_encoder.pkl       # Pre-fitted feature encoder
-│   └── target_encoder.pkl        # Pre-fitted target encoder
-│   ├── scaler.pkl                # Pre-fitted scaler
-├── transformers/                 # Custom transformers for data preprocessing
-│   ├── __init__.py               # Exports transformer classes (BMICategorizer, etc.)
-│   ├── bmi_categorizer.py        # Contains BMICategorizer class
-│   ├── bp_classifier.py          # Contains BPClassifier class
-│   ├── saved_encoder.py          # Contains SavedEncoderTransformer class
-│   ├── saved_scaler.py           # Contains SavedScalerTransformer class
-│   └── feature_correcter.py      # Contains FeatureCorrecter class
-├── config.py                     # Central configuration file defining paths, etc.
-└── LICENSE                       # MIT License
-├── README.md                     # This documentation file
-├── requirements.txt              # Python package requirements
+│   ├── banner_image.png           # Banner image for Home page
+│   ├── data.csv                   # Primary dataset (if needed for reference)
+│   ├── notebook.ipynb             # Jupyter notebook for EDA and model training
+│   ├── logo.png                   # App logo
+│   └── shap_value.png             # SHAP summary plot for Model Evaluation
+├── models/
+│   ├── model.pkl                  # Trained prediction model (pickle file)
+│   ├── feature_encoder.pkl        # Pre-fitted feature encoder (pickle file)
+│   ├── target_encoder.pkl         # Pre-fitted target encoder (pickle file)
+│   ├── scaler.pkl                 # Pre-fitted scaler (pickle file)
+│   └── model_evaluation.pkl       # Serialized performance metrics (pickle file)
+├── transformers/
+│   ├── bmi_categorizer.py         # BMICategoriser transformer
+│   ├── bp_classifier.py           # BPClassifier transformer
+│   ├── saved_encoder.py           # SavedEncoderTransformer for categorical features
+│   ├── saved_scaler.py            # SavedScalerTransformer for numerical features
+│   └── feature_correcter.py       # FeatureCorrecter for cleaning raw inputs
+├── app.py                         # Main Streamlit entry point (defines navigation and common UI elements)
+├── config.py                      # Central configuration: file paths to images, models, etc.
+├── LICENSE                        # MIT License
+├── requirements.txt               # Python package requirements
+├── .gitignore                     # Files and folders to ignore in Git
+└── README.md                      # This documentation file
 ```
 
 ---
 
 ## Installation and Setup
 
-1. **Clone the Repository:**
+1. **Clone the Repository**
 
    ```bash
    git clone https://github.com/iamcbn/SleepDisorder.git
    cd SleepDisorder
    ```
 
-2. **Create a Virtual Environment (Recommended):**
+2. **Create a Virtual Environment**
 
-   **On Windows:**
+   > It is highly recommended to use a virtual environment to isolate dependencies.
+
+   **Windows**
+
    ```bash
    python -m venv venv
    .\venv\Scripts\activate
    ```
 
-   **On macOS/Linux:**
+   **macOS/Linux**
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install Dependencies:**
+3. **Install Dependencies**
 
    ```bash
    pip install -r requirements.txt
+   ```
+
+4. **Configure Streamlit Secrets (for Google Sheets Integration)**
+   If using clinician feedback storage via Google Sheets, create `.streamlit/secrets.toml` with your service account credentials in the following format:
+
+   ```toml
+   [connections.gsheets]
+   type = "service_account"
+   project_id = "your-project-id"
+   private_key_id = "YOUR_PRIVATE_KEY_ID"
+   private_key = """-----BEGIN PRIVATE KEY-----
+   YOUR_PRIVATE_KEY_CONTENT
+   -----END PRIVATE KEY-----"""
+   client_email = "your-service-account@your-project-id.iam.gserviceaccount.com"
+   client_id = "YOUR_CLIENT_ID"
+   auth_uri = "https://accounts.google.com/o/oauth2/auth"
+   token_uri = "https://oauth2.googleapis.com/token"
+   auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
+   client_x509_cert_url = "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40your-project-id.iam.gserviceaccount.com"
    ```
 
 ---
 
 ## Running the Project
 
-### Running the CLI Test Script
+### Streamlit App
 
-The test script located at `app/test.py` interacts with your model. It collects user input, processes the data through your prediction pipeline, and outputs the sleep disorder prediction.
+To launch the multi-page web application, run:
 
-1. **Navigate to the `app` Directory:**
+```bash
+streamlit run app.py
+```
+
+Then open the URL printed in your terminal (e.g. `http://localhost:8501`) in your browser.
+
+---
+
+### CLI Test Script
+
+For quick terminal-based predictions without the web interface:
+
+1. Navigate to the helper folder:
 
    ```bash
-   cd others
+   cd helper
    ```
 
-2. **Run the Test Script:**
+2. Run the CLI script:
 
    ```bash
    python test.py
    ```
 
-   This will prompt you for the necessary inputs, process them through the pipeline, and print out the prediction result.
+This will prompt you for the required inputs, run the prediction pipeline, and display the predicted sleep disorder in the terminal.
 
 ---
 
-## Next Steps: Deploying via API
+## Deployment
 
-In the next phase, we plan to make this project publicly accessible by deploying an API. The envisioned steps include:
+The Streamlit app is hosted on **Streamlit Community Cloud**:
 
-- **Backend with FastAPI:**  
-  Develop a RESTful API that takes JSON input, validates and preprocesses data, runs predictions, and returns results.
-  
-- **Optional Frontend with Streamlit:**  
-  Build an interactive web interface for users to input data and view predictions.
-  
-- **Deployment:**  
-  Host the API and/or web app on platforms such as Render, Railway, or Hugging Face Spaces.
+1. Push your repository to GitHub.
+2. Sign in to [Streamlit Cloud](https://share.streamlit.io).
+3. Create a new app, selecting your GitHub repo and setting `app.py` as the entrypoint.
+4. Ensure the following files are present in the GitHub repo for successful deployment:
 
-Implementing this API will help you understand and gain hands-on experience with modern deployment practices.
+   - `app.py`
+   - `requirements.txt`
+
+🔗 **Live App**: [sleepdisorder-bruno.streamlit.app](https://sleepdisorder-bruno.streamlit.app)
 
 ---
 
 ## Troubleshooting
 
-- **Module or Path Issues:**  
-  Ensure that the paths defined in `config.py` align with your project structure and that the virtual environment is active.
-  
-- **Input Data Errors:**  
-  Verify that inputs conform to the expected ranges (e.g., height in meters between 0.5 and 2.5) as enforced by the `UserDataCollector`.
-  
-- **Dependency Issues:**  
-  If a module is not found, double-check the `requirements.txt` and confirm all necessary packages are installed.
+* **App crashes on start**
+  - Confirm that the paths in `config.py` are correct and match your folder structure.
+
+* **Missing Packages**
+  - If you encounter `ModuleNotFoundError`, ensure you’ve run `pip install -r requirements.txt` in your virtual environment.
+
+* **Secret or Google Sheets Errors**
+  - Double-check your `.streamlit/secrets.toml` formatting (proper TOML syntax).
+  - Make sure the service account email has edit access to the target Google Sheet.
+
+---
+
+## Current Step: Real-World Testing of my model
+
+Training a model is not enough, the model needs to be evaluated with real-world data to understand its performance. Please contact me if you would like to test my model (For clinicians only)
+
+---
+
+## Next Steps: Deploying via API
+
+In the next phase, I plan to make this project accessible by deploying an API. The envisioned steps include:
+
+- **Backend with FastAPI:**  
+  Develop a RESTful API that takes JSON input, validates and preprocesses data, runs predictions, and returns results.
+    
+- **Deployment:**  
+  Host the API.
+
+Implementing this API will help you understand and gain hands-on experience with modern deployment practices.
 
 ---
 
 ## Contributing
 
-Contributions, suggestions, and improvements are welcome! Please fork the repository, make your changes, and submit a pull request with clear descriptions of your modifications or bug fixes.
+Contributions, suggestions, and improvements are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes with clear messages.
+4. Submit a pull request and describe your modifications or enhancements.
+
+Please adhere to the existing code style and add appropriate tests or documentation where necessary.
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
 
 ---
 
-
-### Instructions to Use the README
-
-1. **Copy and paste** the entire text above into a file named `README.md` in your project root.
-2. **Update URLs** (e.g., `https://github.com/iamcbn/SleepDisorder.git`) and any project-specific details as necessary.
-3. **Commit and push** your README along with your other project files.
+**Made with 💚 by [@iamcbn](https://github.com/iamcbn)**
