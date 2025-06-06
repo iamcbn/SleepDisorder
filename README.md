@@ -1,6 +1,6 @@
 ![Sleep Health and Lifestyle Banner](data/banner_image.png)
 
-[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-ff4b4b?logo=streamlit\&logoColor=red)](https://sleepdisorder-bruno.streamlit.app)
+[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-ff4b4b?logo=streamlit\&logoColor=red)](https://sleepdisorder-iamcbn.streamlit.app)
 [![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/github/license/iamcbn/SleepDisorder)](LICENSE)
 <!-- [![Platform](https://img.shields.io/badge/Platform-Streamlit-lightgrey?logo=streamlit)](https://streamlit.io/) -->
@@ -229,7 +229,7 @@ The Streamlit app is hosted on **Streamlit Community Cloud**:
    - `app.py`
    - `requirements.txt`
 
-🔗 **Live App**: [sleepdisorder-bruno.streamlit.app](https://sleepdisorder-bruno.streamlit.app)
+🔗 **Live App**: [sleepdisorder-bruno.streamlit.app](https://sleepdisorder-iamcbn.streamlit.app)
 
 ---
 
